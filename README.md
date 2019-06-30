@@ -1,6 +1,8 @@
 # ML_GCN.pytorch
 PyTorch implementation of [Multi-Label Image Recognition with Graph Convolutional Networks](https://arxiv.org/abs/1904.03582), CVPR 2019.
 
+
+
 ### Requirements
 Please, install the following packages
 - numpy
@@ -46,3 +48,6 @@ year = {2019}
 ```
 ## Reference
 This project is based on https://github.com/durandtibo/wildcat.pytorch
+
+## Tips
+If you have any questions about our work, please do not hesitate to contact us by emails.
