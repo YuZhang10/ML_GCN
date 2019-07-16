@@ -198,7 +198,7 @@ class Engine(object):
         for epoch in range(self.state['start_epoch'], self.state['max_epochs']):
             self.state['epoch'] = epoch
             lr = self.adjust_learning_rate(optimizer)
-            print('lr:{:.5f}'.format(lr))
+            print('lr:',lr)
 
             # train for one epoch
             self.train(train_loader, model, criterion, optimizer, epoch)
@@ -314,12 +314,12 @@ class Engine(object):
 
     def adjust_learning_rate(self, optimizer):
         """Sets the learning rate to the initial LR decayed by 10 every 30 epochs"""
-        # lr = args.lr * (0.1 ** (epoch // 30))
-        decay = 0.1 ** (sum(self.state['epoch'] >= np.array(self.state['epoch_step'])))
-        lr = self.state['lr'] * decay
+        lr_list = []
+        decay = 0.1 if sum(self.state['epoch'] == np.array(self.state['epoch_step'])) > 0 else 1.0
         for param_group in optimizer.param_groups:
             param_group['lr'] = param_group['lr'] * decay
-        return lr
+            lr_list.append(param_group['lr'])
+        return np.unique(lr_list)
 
 
 class MultiLabelMAPEngine(Engine):
