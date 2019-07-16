@@ -318,7 +318,7 @@ class Engine(object):
         decay = 0.1 ** (sum(self.state['epoch'] >= np.array(self.state['epoch_step'])))
         lr = self.state['lr'] * decay
         for param_group in optimizer.param_groups:
-            param_group['lr'] = lr
+            param_group['lr'] = param_group['lr'] * decay
         return lr
 
 
