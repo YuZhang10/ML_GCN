@@ -108,11 +108,8 @@ class COCO2014(data.Dataset):
         self.get_anno()
         self.num_classes = len(self.cat2idx)
 
-        if inp_name is not None:
-            with open(inp_name, 'rb') as f:
-                self.inp = pickle.load(f)
-        else:
-            self.inp = np.identity(80)
+        with open(inp_name, 'rb') as f:
+            self.inp = pickle.load(f)
         self.inp_name = inp_name
 
     def get_anno(self):
