@@ -241,12 +241,8 @@ class Voc2007Classification(data.Dataset):
         self.classes = object_categories
         self.images = read_object_labels_csv(file_csv)
 
-        if inp_name is not None:
-            with open(inp_name, 'rb') as f:
-                self.inp = pickle.load(f)
-        else:
-            self.inp = np.identity(20)
-
+        with open(inp_name, 'rb') as f:
+            self.inp = pickle.load(f)
         self.inp_name = inp_name
 
         print('[dataset] VOC 2007 classification set=%s number of classes=%d  number of images=%d' % (
