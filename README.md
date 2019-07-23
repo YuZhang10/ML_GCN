@@ -16,6 +16,10 @@ checkpoint/coco ([GoogleDrive](https://drive.google.com/open?id=1ivLi1Rc-dCUmN1P
 
 checkpoint/voc ([GoogleDrive](https://drive.google.com/open?id=1lhbmW5g-Mo9KgI07nmc1kwSbEnb6t-YA))
 
+or
+
+[Baidu](https://pan.baidu.com/s/17j3lTjMRmXvWHT86zhaaVA)
+
 ### Options
 - `lr`: learning rate
 - `lrp`: factor for learning rate of pretrained layers. The learning rate of the pretrained layers is `lr * lrp`
