@@ -216,8 +216,6 @@ class AveragePrecisionMeter(object):
             return 0
         ap = torch.zeros(self.scores.size(1))
         rg = torch.arange(1, self.scores.size(0)).float()
-        # self.save_to_mat()
-        self.save_to_np()
         # compute average precision for each class
         for k in range(self.scores.size(1)):
             # sort scores
@@ -289,19 +287,6 @@ class AveragePrecisionMeter(object):
         CR = np.sum(Nc / Ng) / n_class
         CF1 = (2 * CP * CR) / (CP + CR)
         return OP, OR, OF1, CP, CR, CF1
-
-    def save_to_mat(self):
-        import scipy.io as sio
-        scores = self.scores.cpu().numpy().copy()
-        targets = self.targets.cpu().numpy().copy()
-        targets[targets != 1] = 0
-        sio.savemat('../coco_gcn.mat', {'scores': scores, 'targets': targets})
-
-    def save_to_np(self):
-        scores = self.scores.cpu().numpy().copy()
-        targets = self.targets.cpu().numpy().copy()
-        targets[targets != 1] = 0
-        np.save('../resnet_voc.npy', [scores, targets])
 
 def gen_A(num_classes, t, adj_file):
     import pickle
